@@ -1,0 +1,14 @@
+body{
+    background-color:rgb(137, 178, 182);
+}
+#container{
+    display: grid;
+    margin-top: 70px;
+    color:aquamarine;
+}
+#container input{
+    width: 100px;
+}
+h1{
+    text-align: center;
+}
