@@ -132,6 +132,9 @@ let movies =[
 
 //Funcion para mostrar la galeria de peliculas, ocupamos un for para recorrrer la informacion
 function showGallery(infoMovies) {
+
+    document.getElementById("card").innerText  ="";
+
     for(var i=0; i<infoMovies.length; i++) {
         document.getElementById('card').innerHTML +=`
         <div class="col-md-4 mt-3">
@@ -148,4 +151,24 @@ function showGallery(infoMovies) {
 //mandamos a traer la funcion con el objeto que hicimos de la pelicula 
 showGallery(movies);
 
-//vamos a hacer la funcion de buscar con el id del input
+//vamos a hacer la funcion de buscar con el input con el evento "keyup" proporcionan un código que indica qué tecla se presiona
+document.getElementById("nameMovie").addEventListener("keyup", function(){
+    let nameMov=document.getElementById("nameMovie").value;
+    arraySearch= movies.filter(function(peli){
+        if (peli.name.includes(nameMov)) {
+            return peli.name;
+        }
+    });
+    if (this.value=="") {
+        showGallery(movies);
+        
+    }else{
+        if (arraySearch=="") {
+            document.getElementById("para").style.display='block';
+            document.getElementById("card").innerHTML = "";
+        }else{
+            showGallery(arraySearch);
+            document.getElementById("para").style.display='none';
+        }
+    }
+});
